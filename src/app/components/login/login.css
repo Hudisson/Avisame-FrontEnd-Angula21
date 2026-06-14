@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    width: 500px;
+    max-width: 500px;
+    margin-top: 12%;
+}
+
+.content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #181515;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+
+/* Efeito ao focar */
+.form-group input:focus {
+    border-color: #688655;
+    box-shadow: 0 0 5px rgba(194, 224, 214, 0.5);
+}
+
+#btn-login, #btn-register {
+    width: 100%;
+    padding: 10px;
+    background: #121312;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn-login:hover, #btn-register:hover {
+    background: #4c613e;
+    transition: 0.3s;
+}
+
+#btn-login:disabled {
+  background-color: #ccc;
+}
+
+#form-login p, #form-register p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#form-login p a, #form-register p a {
+    color: #688655;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.error{
+  color: red;
+  margin-top: 10px;
+}

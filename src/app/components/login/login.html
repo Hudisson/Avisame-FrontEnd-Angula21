@@ -1,0 +1,36 @@
+<app-nav-login></app-nav-login>
+
+<div class="container">
+
+  <div class="content">
+
+    <h1>Entrar</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="form-login">
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" formControlName="email" id="email" placeholder="seu@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" formControlName="password" required>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" id="btn-login">Entrar</button>
+
+      <p> Não tem uma conta? <a href="/register">Cadastre-se</a> </p>
+
+    </form>
+
+    @if (errorMessage) {
+      <p class="class-error">
+        {{ errorMessage }}
+      </p>
+    }
+
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,46 @@
+header {
+    width: 100%;
+}
+
+.nav-menu {
+    width: 100%;
+    background-color: #121312;
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16%;
+    z-index: 1000;
+}
+
+.logoAvisame {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.logoAvisame:hover,
+.nav-links li a:hover {
+    color: #688655;
+    transition: 0.3s;
+}
