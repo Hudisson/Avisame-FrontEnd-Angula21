@@ -1,0 +1,22 @@
+<header>
+  <nav class="nav-menu">
+    <a href="home.html" class="logoAvisame" id="logoAvisame">Avisame</a>
+
+    <ul class="nav-links">
+      @if (carregando()) {
+        <li style="color: #fff;"><span>Carregando...</span></li>
+      }
+      @else if (erro()) {
+        <li><span style="color: #ff6b6b;">{{ erro() }}</span></li>
+      }
+      @else if (dadosDaApi()) {
+        <li>
+          <span id="txt-username">Olá, {{ dadosDaApi().name }}</span>
+        </li>
+      }
+
+      <!-- <li><a href="#" (click)="authService.logout()">Sair</a></li> -->
+      <li><a href="#">Sair</a></li>
+    </ul>
+  </nav>
+</header>
