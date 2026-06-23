@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
@@ -12,6 +13,20 @@ export const routes: Routes = [
   {
     path: 'register',
     component: Register
+  },
+
+  {
+    path: 'home',
+    loadComponent: () => import('./components/home/home').then(m => m.Home),
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
+    path: '**', redirectTo: '/home'
   }
+
 
 ];
