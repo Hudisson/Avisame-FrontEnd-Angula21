@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, inject, effect, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -7,11 +8,12 @@ import { AuthService } from '../../services/auth/auth.service';
   standalone: true,
   imports: [],
   templateUrl: './nav-menu.html',
-  styleUrl: './nav-menu.css',
+  styleUrls: ['./nav-menu.css'],
 })
 export class NavMenu {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   // Estados locais gerenciados por Signals para reatividade instantânea
   dadosDaApi = signal<any>(null);
@@ -30,6 +32,27 @@ export class NavMenu {
     });
   }
 
+  // Método para efetuar o logout
+  efetuarLogout(event: Event): void {
+
+    event.preventDefault() // Evita que o '#' do link recarregue a página
+    this.authService.logout().subscribe({
+      next: () =>{
+        // Após a API responder e o serviço limpar o local, redireciona para a tela de login
+       this.router.navigate(['']);
+      },
+
+      error: () =>{
+        // Mesmo se a API falhar (ex: servidor fora do ar), redirecionamos o usuário para a tela de login
+      this.router.navigate(['']);
+      }
+
+    });
+
+  } // Fim do método efetuarLogout
+
+
+  // Método para buscar os dados do usuário na API
   private buscarDadosDaApi(): void {
     const token = this.authService.getToken();
 
@@ -57,5 +80,5 @@ export class NavMenu {
         console.error('Erro na requisição:', err);
       }
     });
-  }
+  } // Fim do método buscarDadosDaApi
 }

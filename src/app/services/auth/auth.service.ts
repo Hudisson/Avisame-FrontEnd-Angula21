@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 // Define a estrutura da resposta de login
 interface LoginResponse {
@@ -17,6 +17,7 @@ export class AuthService {
 
   private http = inject(HttpClient);
   private readonly API_URL = 'http://localhost:8080/auth/login'; // URL base da API de autenticação
+  private readonly LOGOUT_URL = 'http://localhost:8080/auth/logout'; // URL para o logout na API
 
   /**
    * O sinal "isAuthenticated" é inicializado com o valor retornado pela função "hasToken()",
@@ -27,7 +28,7 @@ export class AuthService {
   login(credentials: { email: string; password: string }): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.API_URL}`, credentials).pipe(
       tap(response =>{
-        if(response.token) {
+        if(response?.token) {
           localStorage.setItem('jwt_token', response.token);
           this.isAuthenticated.set(true);
         }
@@ -35,10 +36,32 @@ export class AuthService {
     );
   } // Fim do método login
 
-  logout(): void{
-    localStorage.removeItem('jwt_token');
-    this.isAuthenticated.set(false);
-  }
+
+  //Envia uma requisição para a API invalidar o token e limpa o estado local
+  logout(): Observable<any>{
+    const token = this.getToken();
+
+    if(!token){
+      this.limparEstadoLocal();
+      return of(null);
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    // Faz o POST para a API e, independente do sucesso ou erro, limpa o token local no final
+    return this.http.post(this.LOGOUT_URL, {}, { headers }).pipe(
+      tap({
+        next: () => this.limparEstadoLocal(),
+        error: (err) => {
+          console.error('Erro ao invalidar token na API, limpando local assim mesmo:', err);
+          this.limparEstadoLocal();
+        }
+      })
+    );
+
+  } // Fim do método logout
 
   getToken(): string | null {
     return localStorage.getItem('jwt_token');
@@ -46,6 +69,11 @@ export class AuthService {
 
   private hasToken(): boolean{
     return !!localStorage.getItem('jwt_token');
+  }
+
+  private limparEstadoLocal(): void {
+    localStorage.removeItem('jwt_token');
+    this.isAuthenticated.set(false);
   }
 
 } // Fim da classe AuthService
