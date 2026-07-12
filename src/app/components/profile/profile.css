@@ -1,0 +1,129 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: calc(100vh - 140px);
+
+    padding: 30px;
+
+    color: #fff;
+}
+
+
+/* Card do perfil */
+.profile-card {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 30px;
+
+    background-color: #121312;
+
+    border-radius: 8px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+}
+
+
+/* Título */
+.profile-card h1 {
+    margin-bottom: 25px;
+
+    font-size: 28px;
+    color: #1abc9c;
+}
+
+
+/* Dados do usuário */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    text-align: left;
+}
+
+
+.profile-info p {
+
+    margin: 0;
+
+    padding: 12px;
+
+    background-color: #1a252f;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+}
+
+
+.profile-info strong {
+
+    color: #1abc9c;
+
+}
+
+
+/* Mensagens */
+.loading,
+.error {
+
+    font-size: 18px;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+}
+
+
+.loading {
+
+    background-color: #1a252f;
+
+}
+
+
+.error {
+
+    background-color: #8b1e1e;
+
+    color: #fff;
+
+}
+
+.btn-editar {
+    margin-top: 30px;
+
+    width: 100%;
+    max-width: 250px;
+
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #177260; /*#1abc9c;*/
+    color: #fff;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 10px rgba(26, 188, 156, 0.3);
+}
+
+
+.btn-editar:hover {
+    background-color: #159a80;
+}
+
+
