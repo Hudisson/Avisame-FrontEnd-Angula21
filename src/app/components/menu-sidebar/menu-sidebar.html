@@ -1,0 +1,50 @@
+<div class="menu-sidebar">
+  <ul>
+    <li>
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+
+    <li>
+      <a routerLink="/profile" routerLinkActive="active">Perfil</a>
+    </li>
+
+    <li>
+      <span class="span-agenda" (click)="toggleAgenda()">
+        <span>
+          <i
+            class="fa-solid"
+            [class.fa-circle-chevron-down]="!agendaAberta"
+            [class.fa-circle-chevron-up]="agendaAberta">
+          </i>
+          Agenda
+        </span>
+      </span>
+
+      <ul class="ul-agenda" [class.ativo]="agendaAberta">
+        <li>
+          <a routerLink="/tasks" routerLinkActive="active">
+            Atividade diária
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/eventos" routerLinkActive="active">
+            Eventos
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/horarios" routerLinkActive="active">
+            Definir horário
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a routerLink="/logout" routerLinkActive="active">
+        Sair
+      </a>
+    </li>
+  </ul>
+</div>
