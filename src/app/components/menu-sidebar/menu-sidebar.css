@@ -1,0 +1,88 @@
+.menu-sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 250px;
+    height: calc(100dvh - 70px);
+
+    padding: 20px;
+
+    background-color: #121312;
+    color: #fff;
+    overflow-y: auto;
+}
+
+.menu-sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-sidebar > ul > li {
+    margin: 10px 0;
+}
+
+/* Links e botão Agenda */
+.menu-sidebar a,
+.span-agenda {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+
+    border-radius: 6px;
+    cursor: pointer;
+
+    transition: background-color .3s ease, color .3s ease;
+}
+
+.menu-sidebar a:hover,
+.span-agenda:hover {
+    background-color: #1a252f;
+    color: #1abc9c;
+}
+
+/* Ícone */
+.span-agenda i {
+    margin-right: 8px;
+    transition: transform .3s ease;
+}
+
+/* Submenu */
+.ul-agenda {
+    display: none;
+    margin-top: 5px;
+    margin-left: 15px;
+    border-left: 2px solid #2c3e50;
+    padding-left: 10px;
+}
+
+.ul-agenda.ativo {
+    display: block;
+}
+
+/* Itens do submenu */
+.ul-agenda li {
+    margin: 5px 0;
+}
+
+.ul-agenda a {
+    font-size: 16px;
+    padding: 8px 10px;
+}
+
+/* Rotação do ícone (opcional) */
+.span-agenda i.fa-circle-chevron-up {
+    transform: rotate(180deg);
+}
