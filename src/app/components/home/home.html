@@ -1,9 +1,12 @@
-<!-- Nav menu -->
 <app-nav-menu></app-nav-menu>
 
-<!--Menu sidebar (menu lateral)-->
-<app-menu-sidebar></app-menu-sidebar>
+<div class="layout">
+  <app-menu-sidebar></app-menu-sidebar>
 
-<!-- footer -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
 <app-footer></app-footer>
 
