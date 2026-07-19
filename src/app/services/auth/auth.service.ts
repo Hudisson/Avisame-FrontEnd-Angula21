@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 // Define a estrutura da resposta de login
@@ -52,13 +52,17 @@ export class AuthService {
 
     // Faz o POST para a API e, independente do sucesso ou erro, limpa o token local no final
     return this.http.post(this.LOGOUT_URL, {}, { headers }).pipe(
-      tap({
-        next: () => this.limparEstadoLocal(),
-        error: (err) => {
-          console.error('Erro ao invalidar token na API, limpando local assim mesmo:', err);
-          this.limparEstadoLocal();
-        }
-      })
+       tap(() => this.limparEstadoLocal()),
+
+        catchError(error => {
+
+        console.error(error);
+
+        this.limparEstadoLocal();
+
+        return of(null);
+
+    })
     );
 
   } // Fim do método logout

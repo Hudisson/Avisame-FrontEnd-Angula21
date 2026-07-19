@@ -36,19 +36,11 @@ export class NavMenu {
   efetuarLogout(event: Event): void {
 
     event.preventDefault() // Evita que o '#' do link recarregue a página
-    this.authService.logout().subscribe({
-      next: () =>{
-        // Após a API responder e o serviço limpar o local, redireciona para a tela de login
-       this.router.navigate(['']);
-      },
 
-      error: () =>{
-        // Mesmo se a API falhar (ex: servidor fora do ar), redirecionamos o usuário para a tela de login
+    this.authService.logout().subscribe(() => {
       this.router.navigate(['']);
-      }
-
-    });
-
+    })
+    
   } // Fim do método efetuarLogout
 
 
