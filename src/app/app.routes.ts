@@ -43,7 +43,15 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./components/eventos/eventos')
             .then(m => m.Eventos)
-      }
+      },
+
+      {
+        path: 'horarios',
+        loadComponent: () =>
+          import('./components/horarios/horarios')
+            .then(m => m.Horarios)
+      },
+      
     ]
   },
   {
