@@ -1,0 +1,185 @@
+.horarios {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.horarios h1 {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.horarios > p {
+  margin: 0 0 30px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Card do horário atualmente configurado */
+.horario-atual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  padding: 20px;
+  margin-bottom: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.horario-atual span {
+  font-size: 16px;
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+.horario-atual strong {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Formulário */
+.novo-horario {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin-left: 100px;
+  gap: 8px;
+}
+
+.novo-horario label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.novo-horario input {
+  width: 60%;
+  height: 46px;
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #3a4652;
+  border-radius: 6px;
+
+  background-color: #1a252f;
+  color: #fff;
+
+  font-size: 16px;
+  font-family: inherit;
+
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.novo-horario input:focus {
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.15);
+}
+
+.novo-horario input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.novo-horario .controle-horario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.novo-horario .controle-horario input {
+  flex: 1;
+}
+
+.novo-horario button {
+  height: 46px;
+  max-width: 40%;
+  padding: 0 20px;
+  margin-bottom: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.novo-horario button:hover {
+  opacity: 0.9;
+}
+
+.novo-horario button:active {
+  transform: scale(0.98);
+}
+/*=================================*/
+
+/* Input semelhante aos campos de login/registro */
+.novo-horario input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #3a4652;
+  border-radius: 6px;
+
+  background-color: #1a252f;
+  color: #fff;
+
+  font-size: 16px;
+  font-family: inherit;
+
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.novo-horario input:focus {
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.15);
+}
+
+/* Ícone/seletor nativo do input time */
+.novo-horario input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Botão */
+.novo-horario button {
+  width: 100%;
+  height: 46px;
+  margin-top: 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.novo-horario button:hover {
+  opacity: 0.9;
+}
+
+.novo-horario button:active {
+  transform: scale(0.98);
+}

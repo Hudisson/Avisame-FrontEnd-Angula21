@@ -1,0 +1,41 @@
+<section class="horarios">
+  <h1>Horário das notificações</h1>
+
+  <p>
+    Defina o horário em que deseja receber suas notificações por e-mail.
+  </p>
+
+  @if (carregando()) {
+  <p>Carregando configuração...</p>
+  }
+  @else {
+
+  <div class="horario-atual">
+    <span>Horário atual</span>
+
+    @if (horarioAtual()) {
+    <strong>{{ horarioAtual() }}</strong>
+    }
+    @else {
+    <strong>{{ mensagemAviso() }}</strong>
+    }
+  </div>
+
+  <div class="novo-horario">
+    <label for="preferredHour">
+      Definir novo horário
+    </label>
+
+    <div class="controle-horario">
+      <input type="time" id="preferredHour" name="preferredHour" [value]="novoHorario()"
+        (input)="novoHorario.set($any($event.target).value)">
+
+      <button type="button" (click)="salvarHorario()" [disabled]="salvando()">
+        {{ salvando() ? 'Salvando...' : 'Salvar horário' }}
+      </button>
+
+    </div>
+  </div>
+
+  }
+</section>

@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, inject, effect, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink  } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './nav-menu.html',
   styleUrls: ['./nav-menu.css'],
 })
@@ -40,7 +40,7 @@ export class NavMenu {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['']);
     })
-    
+
   } // Fim do método efetuarLogout
 
 

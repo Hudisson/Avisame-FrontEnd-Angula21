@@ -1,6 +1,6 @@
 <header>
   <nav class="nav-menu">
-    <a href="home.html" class="logoAvisame" id="logoAvisame">Avisame</a>
+    <a routerLink="/home" routerLinkActive="active" class="logoAvisame" id="logoAvisame">Avisame</a>
 
     <ul class="nav-links">
       @if (carregando()) {
@@ -16,7 +16,7 @@
       }
 
       <li><a href="#" (click)="efetuarLogout($event)">Sair</a></li>
-      
+
     </ul>
   </nav>
 </header>

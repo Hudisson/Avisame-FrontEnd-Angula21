@@ -1,0 +1,10 @@
+.layout {
+  min-height: calc(100dvh - 70px);
+}
+
+.content {
+  margin-left: 250px;
+  padding: 30px;
+  min-height: calc(100dvh - 70px);
+  box-sizing: border-box;
+}
