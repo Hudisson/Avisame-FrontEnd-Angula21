@@ -1,0 +1,70 @@
+<section class="task-form">
+
+  <h1>Criar tarefa</h1>
+
+  <p class="descricao">
+    Preencha os dados para criar uma nova tarefa.
+  </p>
+
+  @if (erro()) {
+  <div class="mensagem erro">
+    {{ erro() }}
+  </div>
+  }
+
+  @if (sucesso()) {
+  <div class="mensagem sucesso">
+    {{ sucesso() }}
+  </div>
+  }
+
+  <form (submit)="$event.preventDefault(); criarTarefa()">
+
+    <div class="campo">
+      <label for="titulo">Título</label>
+
+      <input type="text" id="titulo" name="titulo" placeholder="Digite o título da tarefa" [value]="titulo()"
+        (input)="titulo.set($any($event.target).value)">
+    </div>
+
+    <div class="campo">
+      <label for="descricao">Descrição</label>
+
+      <textarea id="descricao" name="descricao" placeholder="Digite a descrição da tarefa" [value]="descricao()"
+        (input)="descricao.set($any($event.target).value)"></textarea>
+    </div>
+
+    <div class="campo">
+      <label for="diaDaSemana">Dia da semana</label>
+
+      <select id="diaDaSemana" name="diaDaSemana" [value]="diaDaSemana()"
+        (change)="diaDaSemana.set($any($event.target).value)">
+        <option value="">Selecione um dia</option>
+        <option value="MONDAY">Segunda-feira</option>
+        <option value="TUESDAY">Terça-feira</option>
+        <option value="WEDNESDAY">Quarta-feira</option>
+        <option value="THURSDAY">Quinta-feira</option>
+        <option value="FRIDAY">Sexta-feira</option>
+        <option value="SATURDAY">Sábado</option>
+        <option value="SUNDAY">Domingo</option>
+      </select>
+    </div>
+
+    <div class="campo-checkbox">
+
+      <input type="checkbox" id="ativa" name="ativa" [checked]="ativa()"
+        (change)="ativa.set($any($event.target).checked)">
+
+      <label for="ativa">
+        Tarefa ativa
+      </label>
+
+    </div>
+
+    <button type="submit" [disabled]="salvando()">
+      {{ salvando() ? 'Criando...' : 'Criar tarefa' }}
+    </button>
+
+  </form>
+
+</section>

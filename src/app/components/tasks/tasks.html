@@ -1,1 +1,102 @@
-<p>tasks works!</p>
+<section class="tasks">
+
+  <h1>Minhas Tarefas</h1>
+
+  <p class="descricao">
+    Aqui você pode visualizar e gerenciar suas tarefas.
+  </p>
+
+  @if (carregando()) {
+
+    <p class="mensagem">
+      Carregando tarefas...
+    </p>
+
+  }
+  @else if (erro()) {
+
+    <p class="mensagem erro">
+      {{ erro() }}
+    </p>
+
+  }
+  @else if (tarefas().length === 0) {
+
+    <div class="sem-tarefas">
+      <strong>Nenhuma tarefa encontrada.</strong>
+
+      <p>
+        Você ainda não possui tarefas cadastradas.
+      </p>
+
+      <a routerLink="/home/tarefas/nova" routerLinkActive="active" class="criar-nova-tarefa">
+        Criar uma tarefa
+      </a>
+
+    </div>
+
+  }
+  @else {
+
+    <div class="lista-tarefas">
+
+      @for (tarefa of tarefas(); track tarefa.id) {
+
+        <article class="tarefa">
+
+          <div class="tarefa-conteudo">
+
+            <h2>{{ tarefa.title }}</h2>
+
+            <p>{{ tarefa.description }}</p>
+
+            <div class="tarefa-informacoes">
+
+              <span>
+                {{ tarefa.dayOfWeek }}
+              </span>
+
+              @if (tarefa.isActive) {
+
+                <span class="status ativa">
+                  Ativa
+                </span>
+
+              }
+              @else {
+
+                <span class="status inativa">
+                  Inativa
+                </span>
+
+              }
+
+            </div>
+
+          </div>
+
+          <div class="tarefa-acoes">
+
+            <button type="button">
+              Visualizar
+            </button>
+
+            <button type="button">
+              Editar
+            </button>
+
+            <button type="button">
+              Excluir
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  }
+
+</section>
