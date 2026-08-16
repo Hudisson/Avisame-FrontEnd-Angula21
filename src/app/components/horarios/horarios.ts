@@ -121,19 +121,23 @@ export class Horarios implements OnInit {
     //   ? this.http.put(url, body, { headers })
     //   : this.http.post(url, body, { headers });
 
-      // Adicionado { headers, responseType: 'text' as 'json' } para aceitar resposta em texto puro
+    // Adicionado { headers, responseType: 'text' as 'json' } para aceitar resposta em texto puro
     const requisicao = this.configuracaoExiste()
       ? this.http.put(url, body, { headers, responseType: 'text' as 'json' })
       : this.http.post(url, body, { headers, responseType: 'text' as 'json' });
 
     requisicao.subscribe({
       next: () => {
-        this.horarioAtual.set(this.novoHorario());
+
+        const horario = this.novoHorario();
+
+        this.horarioAtual.set(horario);
         this.configuracaoExiste.set(true);
         this.novoHorario.set('');
         this.salvando.set(false);
-        window.location.reload();
         this.sucesso.set('Horário salvo com sucesso.');
+
+        console.log('Horário atualizado:', this.horarioAtual());
       },
 
       error: (erro) => {

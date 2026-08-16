@@ -103,7 +103,7 @@
   height: 46px;
   max-width: 40%;
   padding: 0 20px;
-  margin-bottom: 10px;
+  margin-top: 1px;
 
   border: none;
   border-radius: 6px;
@@ -114,72 +114,22 @@
 
   cursor: pointer;
 
+  background-color: #1abc9c;
+
   transition: opacity 0.2s, transform 0.1s;
 }
 
 .novo-horario button:hover {
+  background-color: #176b5a;
+  color: #faebeb;
   opacity: 0.9;
 }
 
 .novo-horario button:active {
   transform: scale(0.98);
 }
-/*=================================*/
 
-/* Input semelhante aos campos de login/registro */
-.novo-horario input {
-  width: 100%;
-  height: 46px;
-  padding: 0 14px;
 
-  box-sizing: border-box;
 
-  border: 1px solid #3a4652;
-  border-radius: 6px;
 
-  background-color: #1a252f;
-  color: #fff;
 
-  font-size: 16px;
-  font-family: inherit;
-
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.novo-horario input:focus {
-  border-color: #4dabf7;
-  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.15);
-}
-
-/* Ícone/seletor nativo do input time */
-.novo-horario input::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  cursor: pointer;
-}
-
-/* Botão */
-.novo-horario button {
-  width: 100%;
-  height: 46px;
-  margin-top: 12px;
-
-  border: none;
-  border-radius: 6px;
-
-  font-size: 15px;
-  font-weight: 600;
-  font-family: inherit;
-
-  cursor: pointer;
-
-  transition: opacity 0.2s, transform 0.1s;
-}
-
-.novo-horario button:hover {
-  opacity: 0.9;
-}
-
-.novo-horario button:active {
-  transform: scale(0.98);
-}

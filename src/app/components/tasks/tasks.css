@@ -1,0 +1,215 @@
+.tasks {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+  margin-top: 100px;
+
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.tasks h1 {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.descricao {
+  margin: 0 0 30px;
+
+  text-align: center;
+  line-height: 1.5;
+}
+
+
+/* ============================= */
+/* Mensagens                     */
+/* ============================= */
+
+.mensagem {
+  text-align: center;
+}
+
+.erro {
+  color: #ff6b6b;
+}
+
+
+/* ============================= */
+/* Nenhuma tarefa                */
+/* ============================= */
+
+.sem-tarefas {
+  padding: 30px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sem-tarefas strong {
+  font-size: 18px;
+}
+
+.sem-tarefas p {
+  margin-bottom: 0;
+
+  opacity: 0.7;
+}
+
+.criar-nova-tarefa{
+  display: block;
+  box-sizing: border-box;
+
+  width: 40%;
+  padding: 10px;
+  height: 46px;
+  margin-top: 20px;
+  margin-left: 30%;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #1abc9c;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s,
+    transform 0.1s;
+}
+
+.criar-nova-tarefa:hover{
+  background-color: #176b5a;
+}
+
+
+/* ============================= */
+/* Lista de tarefas              */
+/* ============================= */
+
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* ============================= */
+/* Card da tarefa                */
+/* ============================= */
+
+.tarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tarefa-conteudo {
+  flex: 1;
+}
+
+.tarefa h2 {
+  margin: 0 0 10px;
+
+  font-size: 20px;
+}
+
+.tarefa-conteudo > p {
+  margin: 0 0 15px;
+
+  line-height: 1.5;
+}
+
+
+/* ============================= */
+/* Informações da tarefa         */
+/* ============================= */
+
+.tarefa-informacoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 14px;
+}
+
+.status {
+  padding: 4px 8px;
+
+  border-radius: 5px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ativa {
+  background-color: #1abc9c;
+  color: #fff;
+}
+
+.inativa {
+  background-color: #555;
+  color: #fff;
+}
+
+
+/* ============================= */
+/* Ações                         */
+/* ============================= */
+
+.tarefa-acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tarefa-acoes button {
+  height: 40px;
+
+  padding: 0 14px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #1abc9c;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.tarefa-acoes button:hover {
+  background-color: #176b5a;
+}
+
+.tarefa-acoes button:active {
+  transform: scale(0.98);
+}

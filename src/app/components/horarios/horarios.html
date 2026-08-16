@@ -1,4 +1,5 @@
 <section class="horarios">
+
   <h1>Horário das notificações</h1>
 
   <p>
@@ -6,36 +7,65 @@
   </p>
 
   @if (carregando()) {
-  <p>Carregando configuração...</p>
+
+    <p>Carregando...</p>
+
   }
   @else {
 
-  <div class="horario-atual">
-    <span>Horário atual</span>
+    <div class="horario-atual">
 
-    @if (horarioAtual()) {
-    <strong>{{ horarioAtual() }}</strong>
-    }
-    @else {
-    <strong>{{ mensagemAviso() }}</strong>
-    }
-  </div>
+      <span>Horário atual</span>
 
-  <div class="novo-horario">
-    <label for="preferredHour">
-      Definir novo horário
-    </label>
-
-    <div class="controle-horario">
-      <input type="time" id="preferredHour" name="preferredHour" [value]="novoHorario()"
-        (input)="novoHorario.set($any($event.target).value)">
-
-      <button type="button" (click)="salvarHorario()" [disabled]="salvando()">
-        {{ salvando() ? 'Salvando...' : 'Salvar horário' }}
-      </button>
+      @if (horarioAtual()) {
+        <strong>{{ horarioAtual() }}</strong>
+      }
+      @else {
+        <strong>{{ mensagemAviso() || 'Nenhum horário definido' }}</strong>
+      }
 
     </div>
-  </div>
+
+    @if (erro()) {
+      <p class="mensagem-erro">
+        {{ erro() }}
+      </p>
+    }
+
+    @if (sucesso()) {
+      <p class="mensagem-sucesso">
+        {{ sucesso() }}
+      </p>
+    }
+
+    <div class="novo-horario">
+
+      <label for="preferredHour">
+        Definir novo horário
+      </label>
+
+      <div class="controle-horario">
+
+        <input
+          type="time"
+          id="preferredHour"
+          name="preferredHour"
+          [value]="novoHorario()"
+          (input)="novoHorario.set($any($event.target).value)"
+        >
+
+        <button
+          type="button"
+          (click)="salvarHorario()"
+          [disabled]="salvando()"
+        >
+          {{ salvando() ? 'Salvando...' : 'Salvar horário' }}
+        </button>
+
+      </div>
+
+    </div>
 
   }
+
 </section>

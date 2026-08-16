@@ -27,17 +27,25 @@ export const routes: Routes = [
             .then(m => m.Dashboard)
       },
       {
-        path: 'profile',
+        path: 'perfil',
         loadComponent: () =>
           import('./components/profile/profile')
             .then(m => m.Profile)
       },
       {
-        path: 'tasks',
+        path: 'tarefas',
         loadComponent: () =>
           import('./components/tasks/tasks')
             .then(m => m.Tasks)
       },
+
+      {
+        path: 'tarefas/nova',
+        loadComponent: () =>
+          import('./components/task-form/task-form')
+            .then(m => m.TaskForm)
+      },
+
       {
         path: 'eventos',
         loadComponent: () =>
@@ -51,7 +59,7 @@ export const routes: Routes = [
           import('./components/horarios/horarios')
             .then(m => m.Horarios)
       },
-      
+
     ]
   },
   {
