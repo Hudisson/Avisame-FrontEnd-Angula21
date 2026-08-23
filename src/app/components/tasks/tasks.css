@@ -119,10 +119,10 @@
 
   padding: 20px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(20, 20, 20, 0.1);
   border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(27, 27, 27, 0.03);
 }
 
 .tarefa-conteudo {
