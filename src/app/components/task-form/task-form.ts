@@ -1,10 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { EditorComponent, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-task-form',
-  imports: [],
+  imports: [EditorComponent],
+
+  providers: [
+    {
+      provide: TINYMCE_SCRIPT_SRC,
+      useValue: '/tinymce/tinymce.min.js'
+    }
+  ],
+
   templateUrl: './task-form.html',
   styleUrl: './task-form.css',
 })
@@ -25,6 +34,40 @@ export class TaskForm {
   erro = signal<string | null>(null);
   sucesso = signal<string | null>(null);
 
+  // Configuração do editor Tinymce
+  editorConfig: EditorComponent['init'] = {
+    base_url: '/tinymce',
+    suffix: '.min',
+    height: 300,
+
+    menubar: false,
+
+    plugins: [
+      'lists',
+      'link',
+      'table',
+      'code',
+      'wordcount'
+    ],
+
+    toolbar:
+      'undo redo | ' +
+      'blocks | ' +
+      'bold italic underline | ' +
+      'bullist numlist | ' +
+      'link table | ' +
+      'removeformat code',
+
+    placeholder: 'Digite a descrição da tarefa...'
+  };
+
+
+  onEditorChange(event: any): void {
+    if (event?.editor) {
+      this.descricao.set(event.editor.getContent());
+    }
+  }
+
   criarTarefa(): void {
 
     if (!this.titulo().trim()) {
@@ -32,10 +75,18 @@ export class TaskForm {
       return;
     }
 
-    if (!this.descricao().trim()) {
+    // Remove tags HTML para verificar se realmente há texto escrito
+    const textoLimpo = this.descricao().replace(/<[^>]*>/g, '').trim();
+
+    if (!textoLimpo) {
       this.erro.set('Informe a descrição da tarefa.');
       return;
     }
+
+    // if (!this.descricao().trim()) {
+    //   this.erro.set('Informe a descrição da tarefa.');
+    //   return;
+    // }
 
     if (!this.diaDaSemana()) {
       this.erro.set('Selecione o dia da semana.');

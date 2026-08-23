@@ -29,10 +29,6 @@
         Você ainda não possui tarefas cadastradas.
       </p>
 
-      <a routerLink="/home/tarefas/nova" routerLinkActive="active" class="criar-nova-tarefa">
-        Criar uma tarefa
-      </a>
-
     </div>
 
   }
@@ -46,9 +42,8 @@
 
           <div class="tarefa-conteudo">
 
-            <h2>{{ tarefa.title }}</h2>
-
-            <p>{{ tarefa.description }}</p>
+            <h2 [innerHTML]="tarefa.title"></h2>
+            <!-- <div [innerHTML]="tarefa.description"></div> -->
 
             <div class="tarefa-informacoes">
 
@@ -98,5 +93,10 @@
     </div>
 
   }
+
+  <!-- Botão para cria uma nova tarefa -->
+  <a routerLink="/home/tarefas/nova" routerLinkActive="active" class="criar-nova-tarefa">
+    Criar uma tarefa
+  </a>
 
 </section>

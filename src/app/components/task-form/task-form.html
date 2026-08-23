@@ -1,6 +1,6 @@
 <section class="task-form">
 
-  <h1>Criar tarefa</h1>
+  <h1>Criar Tarefa</h1>
 
   <p class="descricao">
     Preencha os dados para criar uma nova tarefa.
@@ -21,21 +21,29 @@
   <form (submit)="$event.preventDefault(); criarTarefa()">
 
     <div class="campo">
-      <label for="titulo">Título</label>
+      <label for="titulo">Título *</label>
 
       <input type="text" id="titulo" name="titulo" placeholder="Digite o título da tarefa" [value]="titulo()"
         (input)="titulo.set($any($event.target).value)">
     </div>
 
     <div class="campo">
-      <label for="descricao">Descrição</label>
+      <label for="descricao">Descrição *</label>
 
-      <textarea id="descricao" name="descricao" placeholder="Digite a descrição da tarefa" [value]="descricao()"
-        (input)="descricao.set($any($event.target).value)"></textarea>
+        <editor
+          id="descricao"
+          name="descricao"
+          [init]="editorConfig"
+          (onChange)="onEditorChange($event)"
+          (onInput)="onEditorChange($event)"
+          (onUndo)="onEditorChange($event)"
+          (onRedo)="onEditorChange($event)">
+        </editor>
+
     </div>
 
     <div class="campo">
-      <label for="diaDaSemana">Dia da semana</label>
+      <label for="diaDaSemana">Dia da semana *</label>
 
       <select id="diaDaSemana" name="diaDaSemana" [value]="diaDaSemana()"
         (change)="diaDaSemana.set($any($event.target).value)">
