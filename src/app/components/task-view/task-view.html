@@ -1,0 +1,55 @@
+<section class="task-view">
+
+  @if (carregando()) {
+
+    <p class="mensagem">Carregando tarefa...</p>
+
+  }
+  @else if (erro()) {
+
+    <p class="mensagem erro">{{ erro() }}</p>
+
+    <a routerLink="/home/tarefas" class="voltar">Voltar</a>
+
+  }
+  @else if (tarefa(); as t) {
+
+    <article class="tarefa-card">
+
+      <header class="tarefa-card-header">
+
+        <h1>{{ t.title }}</h1>
+
+        <div class="tarefa-informacoes">
+
+          <span class="tarefa-para">Tarefa para: </span> <span class="dia">{{ t.dayOfWeek | diaDaSemana }}</span>
+
+          @if (t.isActive) {
+            <span class="status ativa">Ativa</span>
+          } @else {
+            <span class="status inativa">Inativa</span>
+          }
+
+        </div>
+
+      </header>
+
+      <div class="task-description" [innerHTML]="t.description"></div>
+
+    </article>
+
+    <div class="tarefa-acoes">
+
+      <a routerLink="/home/tarefas" class="voltar">Voltar</a>
+
+      <a [routerLink]="['/home/tarefas', t.id, 'editar']" class="editar">Editar</a>
+
+      <button type="button" (click)="excluirTarefa()" [disabled]="excluindo()">
+        {{ excluindo() ? 'Excluindo...' : 'Excluir' }}
+      </button>
+
+    </div>
+
+  }
+
+</section>
