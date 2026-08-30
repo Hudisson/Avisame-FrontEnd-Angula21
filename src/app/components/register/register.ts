@@ -1,15 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RegisterService } from '../../services/auth/register.service';
 import { NavLogin } from "../nav-login/nav-login";
 import { Footer } from "../footer/footer";
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NavLogin, Footer],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule, NavLogin, Footer],
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
 })
