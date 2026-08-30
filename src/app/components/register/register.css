@@ -47,12 +47,6 @@ header {
 
 }
 
-.logoAvisame:hover,
-.nav-links li a:hover {
-    color: #688655;
-    transition: 0.3s;
-}
-
 .container {
     flex: 1;
     display: flex;
@@ -100,8 +94,8 @@ header {
 
 /* Efeito ao focar */
 .form-group input:focus {
-    border-color: #688655;
-    box-shadow: 0 0 5px rgba(194, 224, 214, 0.5);
+    border-color: #1abc9c;
+    box-shadow: 0 0 5px rgba(42, 44, 44, 0.5);
 }
 
 #btn-login, #btn-register {
@@ -116,19 +110,21 @@ header {
     transition: 0.3s;
 }
 
-#btn-login:hover, #btn-register:hover {
-    background: #4c613e;
-    transition: 0.3s;
+#btn-register:hover {
+    background: #1abc9c;
+    color: #1a252f;
+    font-weight: 800;
+    transition: 0.6s;
 }
 
-#form-login p, #form-register p {
+#form-register p {
     margin-top: 15px;
     text-align: center;
     font-size: 14px;
 }
 
-#form-login p a, #form-register p a {
-    color: #688655;
+#form-register p a {
+    color: #177fd4;
     text-decoration: none;
     font-weight: bold;
     position: relative;

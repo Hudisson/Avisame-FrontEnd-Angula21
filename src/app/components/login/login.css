@@ -70,23 +70,21 @@
     transition: 0.3s;
 }
 
-#btn-login:hover, #btn-register:hover {
-    background: #4c613e;
-    transition: 0.3s;
+#btn-login:hover{
+    background: #1abc9c;
+    color: #1a252f;
+    font-weight: 800;
+    transition: 0.6s;
 }
 
-#btn-login:disabled {
-  background-color: #ccc;
-}
-
-#form-login p, #form-register p {
+#form-login p {
     margin-top: 15px;
     text-align: center;
     font-size: 14px;
 }
 
-#form-login p a, #form-register p a {
-    color: #688655;
+#form-login p a{
+    color: #177fd4;
     text-decoration: none;
     font-weight: bold;
     position: relative;
