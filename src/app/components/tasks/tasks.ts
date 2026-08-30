@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { DiaDaSemanaPipe } from '../../pipes/dia-da-semana.pipe';
+
 interface Tarefa {
   id: string;
   title: string;
@@ -14,7 +16,7 @@ interface Tarefa {
 
 @Component({
   selector: 'app-tasks',
-  imports: [RouterLink],
+  imports: [RouterLink, DiaDaSemanaPipe],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })

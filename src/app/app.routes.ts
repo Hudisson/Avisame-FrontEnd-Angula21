@@ -47,6 +47,13 @@ export const routes: Routes = [
       },
 
       {
+        path: 'tarefa/:id',
+        loadComponent: () =>
+          import('./components/task-view/task-view')
+            .then(m => m.TaskView)
+      },
+
+      {
         path: 'eventos',
         loadComponent: () =>
           import('./components/eventos/eventos')

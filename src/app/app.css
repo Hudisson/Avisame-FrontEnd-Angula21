@@ -1,0 +1,17 @@
+/* O :host ::ng-deep força o Angular a estilizar o HTML do [innerHTML] */
+:host ::ng-deep * pre {
+  /* Reseta os estilos nativos que travam o texto */
+  all: unset !important;
+
+  /* Força comportamento de bloco flexível */
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+
+  /* Força a quebra de linha */
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+
+}
