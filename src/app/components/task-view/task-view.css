@@ -131,7 +131,7 @@
 .status {
   padding: 4px 8px;
 
-  border-radius: 5px;
+  border-radius: 2px;
 
   font-size: 13px;
   font-weight: 600;
@@ -143,9 +143,12 @@
 }
 
 .inativa {
-  background-color: #f57c7c;
+  background-color: #c22121;
   color: #fff;
 }
+
+
+
 
 
 /* ============================= */
@@ -162,6 +165,7 @@
 .tarefa-acoes a,
 .tarefa-acoes button {
   height: 40px;
+  gap: 8px; /* Espaço entre o ícone e o texto */
 
   padding: 0 16px;
 
@@ -196,7 +200,7 @@
   transform: scale(0.98);
 }
 
-.tarefa-acoes .voltar {
+.tarefa-acoes .btn-voltar {
   background-color: #555;
 }
 
@@ -209,7 +213,7 @@
 }
 
 .tarefa-acoes button[type="button"]:last-child:hover {
-  background-color: #c94f4f;
+  background-color: #c22121;
 }
 
 .tarefa-acoes button:disabled {
@@ -217,3 +221,119 @@
   cursor: not-allowed;
   transform: none;
 }
+
+
+/* ============================= */
+/* Modal de Confirmação          */
+/* ============================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.modal-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+
+  max-width: 420px;
+  width: 90%;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+
+  animation: modalEntrada 0.2s ease-out;
+}
+
+.modal-card h3 {
+  margin: 0 0 10px;
+
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-card p {
+  margin: 0 0 24px;
+
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.modal-acoes {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-cancelar {
+  height: 42px;
+  padding: 0 18px;
+
+  border: 1px solid #7e7978;
+  border-radius: 6px;
+
+  background-color: #ff6b6b !important;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #c22121 !important;
+}
+
+.btn-confirmar {
+  height: 42px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #1abc9c !important;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: #176b5a !important;
+}
+
+@keyframes modalEntrada {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
