@@ -157,7 +157,7 @@
 .status {
   padding: 4px 8px;
 
-  border-radius: 5px;
+  border-radius: 2px;
 
   font-size: 13px;
   font-weight: 600;
@@ -169,7 +169,7 @@
 }
 
 .inativa {
-  background-color: #f57c7c;
+  background-color: #c22121;
   color: #fff;
 }
 
@@ -185,6 +185,10 @@
 }
 
 .tarefa-acoes button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o ícone e o texto */
+
   height: 40px;
 
   padding: 0 14px;
@@ -192,7 +196,7 @@
   border: none;
   border-radius: 6px;
 
-  background-color: #1abc9c;
+  background-color: #2a5566be;
   color: #fff;
 
   font-size: 14px;
@@ -206,8 +210,20 @@
     transform 0.1s ease;
 }
 
+
+.criar-nova-tarefa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.criar-nova-tarefa i{
+  font-size: 18px !important;
+}
+
 .tarefa-acoes button:hover {
-  background-color: #176b5a;
+  background-color: #176b5a !important;
 }
 
 .tarefa-acoes button:active {

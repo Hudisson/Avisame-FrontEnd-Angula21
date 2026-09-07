@@ -2,54 +2,77 @@
 
   @if (carregando()) {
 
-    <p class="mensagem">Carregando tarefa...</p>
+  <p class="mensagem">Carregando tarefa...</p>
 
   }
   @else if (erro()) {
 
-    <p class="mensagem erro">{{ erro() }}</p>
+  <p class="mensagem erro">{{ erro() }}</p>
 
-    <a routerLink="/home/tarefas" class="voltar">Voltar</a>
+  <a routerLink="/home/tarefas" class="voltar">Voltar</a>
 
   }
   @else if (tarefa(); as t) {
 
-    <article class="tarefa-card">
+  <article class="tarefa-card">
 
-      <header class="tarefa-card-header">
+    <header class="tarefa-card-header">
 
-        <h1>{{ t.title }}</h1>
+      <h1>{{ t.title }}</h1>
 
-        <div class="tarefa-informacoes">
+      <div class="tarefa-informacoes">
 
-          <span class="tarefa-para">Tarefa para: </span> <span class="dia">{{ t.dayOfWeek | diaDaSemana }}</span>
+        <span class="tarefa-para">Tarefa para: </span> <span class="dia">{{ t.dayOfWeek | diaDaSemana }}</span>
 
-          @if (t.isActive) {
-            <span class="status ativa">Ativa</span>
-          } @else {
-            <span class="status inativa">Inativa</span>
-          }
+        @if (t.isActive) {
+        <span class="status ativa">Ativa</span>
+        } @else {
+        <span class="status inativa">Inativa</span>
+        }
 
-        </div>
+      </div>
 
-      </header>
+    </header>
 
-      <div class="task-description" [innerHTML]="t.description"></div>
+    <div class="task-description" [innerHTML]="t.description"></div>
 
-    </article>
+  </article>
 
-    <div class="tarefa-acoes">
+  <div class="tarefa-acoes">
 
-      <a routerLink="/home/tarefas" class="voltar">Voltar</a>
+    <a routerLink="/home/tarefas" class="btn-voltar">
+      <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
 
-      <a [routerLink]="['/home/tarefas', t.id, 'editar']" class="editar">Editar</a>
+    <a [routerLink]="['/home/tarefas', t.id, 'editar']" class="editar" class="btn-editar">
+      Editar <i class="fa-regular fa-pen-to-square"></i>
+    </a>
 
-      <button type="button" (click)="excluirTarefa()" [disabled]="excluindo()">
-        {{ excluindo() ? 'Excluindo...' : 'Excluir' }}
-      </button>
+    <button type="button" (click)="solicitarConfirmacaoExclusao()" [disabled]="excluindo()" class="btn-excluir">
+      {{ excluindo() ? 'Excluindo...' : 'Excluir' }} <i class="fa-solid fa-trash"></i>
+    </button>
 
+  </div>
+
+  }
+
+  <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
+  @if (confirmandoExclusao()) {
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h3>Excluir Tarefa</h3>
+      <p>Tem certeza de que deseja excluir esta tarefa? Esta ação não poderá ser desfeita.</p>
+
+      <div class="modal-acoes">
+        <button type="button" class="btn-cancelar" (click)="cancelarExclusao()">
+          Cancelar <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button type="button" class="btn-confirmar" (click)="confirmarEExcluir()">
+          Confirmar e Excluir <i class="fa-solid fa-check"></i>
+        </button>
+      </div>
     </div>
-
+  </div>
   }
 
 </section>

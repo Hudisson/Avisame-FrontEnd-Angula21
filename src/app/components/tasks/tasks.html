@@ -73,15 +73,7 @@
           <div class="tarefa-acoes">
 
             <button type="button" [routerLink]="['/home/tarefa', tarefa.id]">
-              Visualizar
-            </button>
-
-            <button type="button">
-              Editar
-            </button>
-
-            <button type="button">
-              Excluir
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar detalhes
             </button>
 
           </div>
@@ -96,7 +88,7 @@
 
   <!-- Botão para cria uma nova tarefa -->
   <a routerLink="/home/tarefas/nova" routerLinkActive="active" class="criar-nova-tarefa">
-    Criar uma tarefa
+    <i class="fa-solid fa-plus"></i> Criar uma tarefa
   </a>
 
 </section>

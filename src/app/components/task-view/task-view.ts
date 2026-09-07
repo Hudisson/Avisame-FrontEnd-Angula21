@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 import { DiaDaSemanaPipe } from '../../pipes/dia-da-semana.pipe';
 
 interface Tarefa {
@@ -16,11 +19,13 @@ interface Tarefa {
 
 @Component({
   selector: 'app-task-view',
-  imports: [RouterLink, DiaDaSemanaPipe],
+  imports: [RouterLink, DiaDaSemanaPipe, FontAwesomeModule],
   templateUrl: './task-view.html',
   styleUrl: './task-view.css',
 })
 export class TaskView implements OnInit {
+
+  // faCoffee = faCoffee;
 
   private http = inject(HttpClient);
   private route = inject(ActivatedRoute);
@@ -29,9 +34,11 @@ export class TaskView implements OnInit {
   private readonly TASK_URL = 'http://localhost:8080/tasks/task';
   private readonly DELETE_TASK_URL = 'http://localhost:8080/tasks/delete';
 
+  // Variáveis
   tarefa = signal<Tarefa | null>(null);
   carregando = signal(true);
   erro = signal<string | null>(null);
+  confirmandoExclusao = signal(false);
   excluindo = signal(false);
 
   ngOnInit(): void {
@@ -86,15 +93,28 @@ export class TaskView implements OnInit {
     });
   }
 
-  excluirTarefa(): void {
+
+  // Fluxo do Modal de Exclusão
+
+  // Abre o modal
+  solicitarConfirmacaoExclusao(): void {
+    this.confirmandoExclusao.set(true);
+  }
+
+  //Fecha o modal sem excluir
+  cancelarExclusao(): void {
+    this.confirmandoExclusao.set(false);
+  }
+
+  //Executa a exclusão quando o usuário confirma no modal
+  confirmarEExcluir(): void {
     const tarefaAtual = this.tarefa();
     if (!tarefaAtual) return;
-
-    if (!confirm('Tem certeza que deseja excluir esta tarefa?')) return;
 
     const headers = this.getHeaders();
     if (!headers) return;
 
+    this.confirmandoExclusao.set(false);
     this.excluindo.set(true);
 
     this.http.delete(`${this.DELETE_TASK_URL}/${tarefaAtual.id}`, { headers }).subscribe({

@@ -54,6 +54,13 @@ export const routes: Routes = [
       },
 
       {
+        path: 'tarefas/:id/editar',
+        loadComponent: () =>
+          import('./components/task-edit/task-edit')
+            .then(m => m.TaskEdit)
+      },
+
+      {
         path: 'eventos',
         loadComponent: () =>
           import('./components/eventos/eventos')
