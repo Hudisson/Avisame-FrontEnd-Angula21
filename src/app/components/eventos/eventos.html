@@ -1,1 +1,96 @@
-<p>eventos works!</p>
+<section class="eventos">
+
+  <h1>Meus Eventos</h1>
+
+  <p class="descricao">
+    Aqui você pode visualizar e gerenciar seus eventos.
+  </p>
+
+  @if (carregando()) {
+
+  <p class="mensagem">
+    Carregando eventos...
+  </p>
+
+  }
+  @else if (erro()) {
+
+  <p class="mensagem erro">
+    {{ erro() }}
+  </p>
+
+  }
+  @else if (eventos().length === 0) {
+
+  <div class="sem-eventos">
+    <strong>Nenhum evento encontrado.</strong>
+
+    <p>
+      Você ainda não possui eventos cadastrados.
+    </p>
+
+  </div>
+
+  }
+  @else {
+
+  <div class="lista-eventos">
+
+    @for (evento of eventos(); track evento.id) {
+
+    <article class="evento">
+
+      <div class="evento-conteudo">
+
+        <h2>{{ evento.title }}</h2>
+
+        <!-- <div class="evento-descricao" [innerHTML]="evento.description"></div> -->
+
+        <div class="evento-informacoes">
+
+          <span>
+            {{ evento.eventDate | date:'dd/MM/yyyy' }}
+          </span>
+
+          @if (evento.isNotified) {
+
+          <span class="status notificado">
+            Notificado
+          </span>
+
+          }
+          @else {
+
+          <span class="status pendente">
+            Pendente
+          </span>
+
+          }
+
+        </div>
+
+      </div>
+
+      <div class="evento-acoes">
+
+        <button type="button">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar detalhes
+        </button>
+
+
+      </div>
+
+    </article>
+
+    }
+
+  </div>
+
+  }
+
+  <!-- Botão para criar um novo evento -->
+  <a routerLink="/home/eventos/novo" routerLinkActive="active" class="criar-novo-evento">
+     <i class="fa-solid fa-plus"></i> Criar um evento
+  </a>
+
+</section>

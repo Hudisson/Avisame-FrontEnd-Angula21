@@ -68,6 +68,13 @@ export const routes: Routes = [
       },
 
       {
+        path: 'eventos/novo',
+        loadComponent: () =>
+          import('./components/event-form/event-form')
+            .then(m => m.EventForm)
+      },
+
+      {
         path: 'horarios',
         loadComponent: () =>
           import('./components/horarios/horarios')
