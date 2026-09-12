@@ -1,1 +1,101 @@
-<p>dashboard works!</p>
+<section class="dashboard">
+
+  <h1 class="titulo-dashboard">Meu Painel</h1>
+
+  <p class="descricao">
+    Um resumo das suas tarefas e eventos.
+  </p>
+
+  @if (carregando()) {
+
+  <p class="mensagem">Carregando dados...</p>
+
+  }
+  @else if (erro()) {
+
+  <p class="mensagem erro">{{ erro() }}</p>
+
+  }
+  @else {
+
+  <div class="cards-resumo">
+
+    <div class="card-resumo">
+      <span class="card-icone tarefas"><i class="fa-solid fa-list-check"></i></span>
+      <div class="card-info">
+        <span class="card-numero">{{ totalTarefas() }}</span>
+        <span class="card-label">Tarefas cadastradas</span>
+      </div>
+    </div>
+
+    <div class="card-resumo">
+      <span class="card-icone eventos"><i class="fa-solid fa-calendar-days"></i></span>
+      <div class="card-info">
+        <span class="card-numero">{{ totalEventos() }}</span>
+        <span class="card-label">Eventos cadastrados</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="paineis">
+
+    <article class="painel">
+
+      <header class="painel-header">
+        <h2>Tarefas</h2>
+      </header>
+
+      <div class="painel-barra">
+        <div class="barra-preenchida" [style.width.%]="percentual(tarefasAtivas(), totalTarefas())"></div>
+      </div>
+
+      <div class="painel-legenda">
+        <span class="legenda-item">
+          <span class="bolinha ativa"></span>
+          Ativas: {{ tarefasAtivas() }}
+        </span>
+        <span class="legenda-item">
+          <span class="bolinha inativa"></span>
+          Inativas: {{ tarefasInativas() }}
+        </span>
+      </div>
+
+      <a routerLink="/home/tarefas" class="painel-link">
+        Ver todas <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </article>
+
+    <article class="painel">
+
+      <header class="painel-header">
+        <h2>Eventos</h2>
+      </header>
+
+      <div class="painel-barra">
+        <div class="barra-preenchida" [style.width.%]="percentual(eventosNotificados(), totalEventos())"></div>
+      </div>
+
+      <div class="painel-legenda">
+        <span class="legenda-item">
+          <span class="bolinha ativa"></span>
+          Notificados: {{ eventosNotificados() }}
+        </span>
+        <span class="legenda-item">
+          <span class="bolinha inativa"></span>
+          Pendentes: {{ eventosPendentes() }}
+        </span>
+      </div>
+
+      <a routerLink="/home/eventos" class="painel-link">
+        Ver todos <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </article>
+
+  </div>
+
+  }
+
+</section>

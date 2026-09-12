@@ -1,0 +1,222 @@
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+.dashboard h1 {
+  margin: 0 0 10px;
+}
+
+.descricao {
+  margin: 0 0 30px;
+
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.titulo-dashboard{
+  margin-top: 70px !important;
+}
+
+
+/* ============================= */
+/* Mensagens                     */
+/* ============================= */
+
+.mensagem {
+  text-align: center;
+}
+
+.erro {
+  color: #ff6b6b;
+}
+
+
+/* ============================= */
+/* Cards de resumo               */
+/* ============================= */
+
+.cards-resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+.card-resumo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  width: 450px;
+
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+
+  background-color: #000;
+  color: #fff;
+}
+
+.card-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  font-size: 20px;
+  color: #fff;
+}
+
+.card-icone.tarefas {
+  background-color: #1abc9c;
+}
+
+.card-icone.eventos {
+  background-color: #4dabf7;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-numero {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.card-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* ============================= */
+/* Painéis (tarefas / eventos)   */
+/* ============================= */
+
+.paineis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+
+.painel {
+  padding: 20px;
+
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  border-radius: 10px;
+
+  background-color: rgba(27, 27, 27, 0.1);
+
+  width: 450px;
+
+}
+
+.painel-header {
+  margin-bottom: 16px;
+}
+
+.painel-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.painel-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 16px;
+  padding: 10px;
+
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  border-radius: 5px;
+
+  background-color: black;
+  width: 400px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #fff;
+  text-decoration: none;
+}
+
+.painel-link:hover{
+  background-color: #176b5a;
+}
+
+
+/* ============================= */
+/* Barra de proporção            */
+/* ============================= */
+
+.painel-barra {
+  width: 100%;
+  height: 10px;
+
+  border-radius: 5px;
+  overflow: hidden;
+
+  background-color: #fff;
+
+  margin-bottom: 14px;
+}
+
+.barra-preenchida {
+  height: 100%;
+
+  background-color: #454d49;
+
+  transition: width 0.3s ease;
+}
+
+
+/* ============================= */
+/* Legenda                       */
+/* ============================= */
+
+.painel-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  font-size: 14px;
+}
+
+.legenda-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bolinha {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+}
+
+.bolinha.ativa {
+  background-color: #1abc9c;
+}
+
+.bolinha.inativa {
+  background-color: #c22121;
+}
