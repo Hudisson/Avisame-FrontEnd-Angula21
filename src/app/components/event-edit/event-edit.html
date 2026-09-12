@@ -1,0 +1,87 @@
+<section class="task-form">
+
+  <h1>Editar evento</h1>
+
+  <p class="descricao">
+    Atualize os dados do evento.
+  </p>
+
+  @if (carregando()) {
+
+  <p class="mensagem">Carregando evento...</p>
+
+  }
+  @else if (erro() && !titulo()) {
+
+  <p class="mensagem erro">{{ erro() }}</p>
+
+  <a routerLink="/home/eventos" class="voltar">Voltar</a>
+
+  }
+  @else {
+
+  @if (erro()) {
+  <div class="mensagem erro">
+    {{ erro() }}
+  </div>
+  }
+
+  @if (sucesso()) {
+  <div class="mensagem sucesso">
+    {{ sucesso() }}
+  </div>
+  }
+
+  <form (submit)="$event.preventDefault(); solicitarConfirmacao()">
+
+    <div class="campo">
+      <label for="titulo">Título</label>
+
+      <input type="text" id="titulo" name="titulo" placeholder="Digite o título do evento" [value]="titulo()"
+        (input)="titulo.set($any($event.target).value)">
+    </div>
+
+    <div class="campo">
+      <label for="descricao">Descrição</label>
+
+      <editor id="descricao" name="descricao" [init]="editorConfig" [initialValue]="descricao()"
+        (onChange)="onEditorChange($event)" (onInput)="onEditorChange($event)" (onUndo)="onEditorChange($event)"
+        (onRedo)="onEditorChange($event)">
+      </editor>
+    </div>
+
+    <div class="campo">
+      <label for="eventDate">Data do evento</label>
+
+      <input type="date" id="eventDate" name="eventDate" [value]="dataDoEvento()"
+        (input)="dataDoEvento.set($any($event.target).value)">
+    </div>
+
+    <button type="submit" [disabled]="salvando()">
+      {{ salvando() ? 'Salvando...' : 'Salvar alterações' }}
+    </button>
+
+  </form>
+
+  }
+
+  <!-- POP-UP MODAL DE CONFIRMAÇÃO -->
+  @if (confirmandoSalvamento()) {
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h3>Confirmar alterações</h3>
+      <p>Tem certeza de que deseja salvar as alterações deste evento?</p>
+
+      <div class="modal-acoes">
+        <button type="button" class="btn-cancelar" (click)="cancelarSalvamento()">
+          Cancelar
+        </button>
+        <button type="button" class="btn-confirmar" (click)="confirmarEEditar()">
+          Confirmar e Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+</section>

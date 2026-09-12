@@ -73,7 +73,7 @@
 
       <div class="evento-acoes">
 
-        <button type="button">
+        <button type="button" [routerLink]="['/home/eventos', evento.id]">
           <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar detalhes
         </button>
 
@@ -90,7 +90,7 @@
 
   <!-- Botão para criar um novo evento -->
   <a routerLink="/home/eventos/novo" routerLinkActive="active" class="criar-novo-evento">
-     <i class="fa-solid fa-plus"></i> Criar um evento
+    <i class="fa-solid fa-plus"></i> Criar um evento
   </a>
 
 </section>

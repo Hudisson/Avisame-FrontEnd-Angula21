@@ -1,0 +1,79 @@
+<section class="event-view">
+
+  @if (carregando()) {
+
+  <p class="mensagem">Carregando evento...</p>
+
+  }
+  @else if (erro()) {
+
+  <p class="mensagem erro">{{ erro() }}</p>
+
+  <a routerLink="/home/eventos" class="voltar">Voltar</a>
+
+  }
+  @else if (evento(); as e) {
+
+  <article class="evento-card">
+
+    <header class="evento-card-header">
+
+      <h1>{{ e.title }}</h1>
+
+      <div class="evento-informacoes">
+
+        <span class="evento-para">Data do evento: </span> <span class="data">{{ e.eventDate | date:'dd/MM/yyyy'
+          }}</span>
+
+        @if (e.isNotified) {
+        <span class="status notificado">Notificado</span>
+        } @else {
+        <span class="status pendente">Pendente</span>
+        }
+
+      </div>
+
+    </header>
+
+    <div class="event-description" [innerHTML]="e.description"></div>
+
+  </article>
+
+  <div class="evento-acoes">
+
+    <a routerLink="/home/eventos" class="btn-voltar">
+      <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+
+    <a [routerLink]="['/home/eventos', e.id, 'editar']" class="btn-editar">
+      Editar <i class="fa-regular fa-pen-to-square"></i>
+    </a>
+
+    <button type="button" (click)="solicitarConfirmacaoExclusao()" [disabled]="excluindo()" class="btn-excluir">
+      {{ excluindo() ? 'Excluindo...' : 'Excluir' }} <i class="fa-solid fa-trash"></i>
+    </button>
+
+  </div>
+
+  }
+
+  <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
+  @if (confirmandoExclusao()) {
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h3>Excluir Evento</h3>
+      <p>Tem certeza de que deseja excluir este evento? Esta ação não poderá ser desfeita.</p>
+
+      <div class="modal-acoes">
+        <button type="button" class="btn-cancelar" (click)="cancelarExclusao()">
+          Cancelar <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button type="button" class="btn-confirmar" (click)="confirmarEExcluir()">
+          Confirmar e Excluir <i class="fa-solid fa-check"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+</section>
