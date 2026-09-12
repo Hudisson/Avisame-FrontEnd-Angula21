@@ -1,0 +1,334 @@
+.event-view {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  margin-top: 100px;
+
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+
+/* ============================= */
+/* Mensagens                     */
+/* ============================= */
+
+.mensagem {
+  text-align: center;
+}
+
+.erro {
+  color: #ff6b6b;
+}
+
+
+/* ============================= */
+/* Card do evento                */
+/* ============================= */
+
+.evento-card {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 auto 20px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(163, 139, 139, 0.1);
+  border-radius: 10px;
+
+  background: rgba(14, 13, 13, 0.03);
+}
+
+.evento-card::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.evento-card-header {
+  margin-bottom: 20px;
+}
+
+.evento-card-header h1 {
+  margin: 0 0 12px;
+
+  font-size: 28px;
+  text-align: center;
+
+  overflow-wrap: anywhere;
+}
+
+.evento-card-header .evento-para {
+  font-weight: 800;
+}
+
+.evento-informacoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  font-size: 14px;
+}
+
+
+/* ============================= */
+/* Descrição (conteúdo TinyMCE)  */
+/* ============================= */
+
+.event-description {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  height: auto;
+
+  padding: 20px;
+
+  text-align: justify;
+  line-height: 1.2;
+
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.event-description * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.event-description img {
+  height: auto !important;
+}
+
+.event-description table {
+  display: block !important;
+  overflow-x: auto;
+}
+
+.event-description code {
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.event-description a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* ============================= */
+/* Status                        */
+/* ============================= */
+
+.status {
+  padding: 4px 8px;
+
+  border-radius: 2px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.notificado {
+  background-color: #1abc9c;
+  color: #fff;
+}
+
+.pendente {
+  background-color: #555;
+  color: #fff;
+}
+
+
+/* ============================= */
+/* Ações                         */
+/* ============================= */
+
+.evento-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.evento-acoes a,
+.evento-acoes button {
+  height: 40px;
+  gap: 8px;
+
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 6px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #1abc9c;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.evento-acoes a:hover,
+.evento-acoes button:hover {
+  background-color: #176b5a;
+}
+
+.evento-acoes button:active {
+  transform: scale(0.98);
+}
+
+.evento-acoes .btn-voltar {
+  background-color: #555;
+}
+
+.evento-acoes .btn-voltar:hover {
+  background-color: #3d3d3d;
+}
+
+.evento-acoes button[type="button"]:last-child {
+  background-color: #ff6b6b;
+}
+
+.evento-acoes button[type="button"]:last-child:hover {
+  background-color: #c22121;
+}
+
+.evento-acoes button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ============================= */
+/* Modal de Confirmação          */
+/* ============================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.modal-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+
+  max-width: 420px;
+  width: 90%;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+
+  animation: modalEntrada 0.2s ease-out;
+}
+
+.modal-card h3 {
+  margin: 0 0 10px;
+
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-card p {
+  margin: 0 0 24px;
+
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.modal-acoes {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-cancelar {
+  height: 42px;
+  padding: 0 18px;
+
+  border: 1px solid #7e7978;
+  border-radius: 6px;
+
+  background-color: #ff6b6b !important;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #c22121 !important;
+}
+
+.btn-confirmar {
+  height: 42px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #1abc9c !important;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: #176b5a !important;
+}
+
+@keyframes modalEntrada {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -75,6 +75,20 @@ export const routes: Routes = [
       },
 
       {
+        path: 'eventos/:id',
+        loadComponent: () =>
+          import('./components/event-view/event-view')
+            .then(m => m.EventView)
+      },
+
+      {
+        path: 'eventos/:id/editar',
+        loadComponent: () =>
+          import('./components/event-edit/event-edit')
+            .then(m => m.EventEdit)
+      },
+
+      {
         path: 'horarios',
         loadComponent: () =>
           import('./components/horarios/horarios')
