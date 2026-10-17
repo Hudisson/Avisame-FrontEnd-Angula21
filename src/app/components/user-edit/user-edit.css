@@ -52,7 +52,7 @@
 }
 
 .campo input:focus {
-  outline: 2px solid #1abc9c;
+  outline: 1px solid #1abc9c;
   outline-offset: 1px;
 }
 

@@ -27,7 +27,7 @@
 
       <div class="form-group">
         <label for="password">Senha</label>
-        <input type="password" id="password" formControlName="senha">
+        <input type="password" id="password" formControlName="senha" appTogglePassword>
         @if (registerForm.get('senha')?.touched && registerForm.get('senha')?.invalid) {
           <small class="erro">A senha deve ter pelo menos 6 caracteres.</small>
         }
@@ -35,7 +35,7 @@
 
       <div class="form-group">
         <label for="confirm-password">Confirmar Senha</label>
-        <input type="password" id="confirm-password" formControlName="confirmarSenha">
+        <input type="password" id="confirm-password" formControlName="confirmarSenha" appTogglePassword>
         <!-- Validação customizada de senhas iguais -->
         @if (registerForm.touched && registerForm.hasError('senhasDiferentes')) {
           <small class="erro">As senhas não coincidem.</small>

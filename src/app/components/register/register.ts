@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { RegisterService } from '../../services/auth/register.service';
 import { NavLogin } from "../nav-login/nav-login";
 import { Footer } from "../footer/footer";
+import { TogglePasswordDirective } from '../../directives/toggle-password.directive';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule, NavLogin, Footer],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule, NavLogin, Footer, TogglePasswordDirective],
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
 })
