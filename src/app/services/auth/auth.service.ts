@@ -42,7 +42,7 @@ export class AuthService {
     const token = this.getToken();
 
     if(!token){
-      this.limparEstadoLocal();
+      this.limparSessaoLocal();
       return of(null);
     }
 
@@ -52,13 +52,13 @@ export class AuthService {
 
     // Faz o POST para a API e, independente do sucesso ou erro, limpa o token local no final
     return this.http.post(this.LOGOUT_URL, {}, { headers }).pipe(
-       tap(() => this.limparEstadoLocal()),
+       tap(() => this.limparSessaoLocal()),
 
         catchError(error => {
 
         console.error(error);
 
-        this.limparEstadoLocal();
+        this.limparSessaoLocal();
 
         return of(null);
 
@@ -75,7 +75,7 @@ export class AuthService {
     return !!localStorage.getItem('jwt_token');
   }
 
-  private limparEstadoLocal(): void {
+  limparSessaoLocal(): void {
     localStorage.removeItem('jwt_token');
     this.isAuthenticated.set(false);
   }

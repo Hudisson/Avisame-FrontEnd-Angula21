@@ -33,6 +33,12 @@ export const routes: Routes = [
             .then(m => m.Profile)
       },
       {
+        path: 'perfil/editar',
+        loadComponent: () =>
+          import('./components/user-edit/user-edit')
+            .then(m => m.UserEdit)
+      },
+      {
         path: 'tarefas',
         loadComponent: () =>
           import('./components/tasks/tasks')
