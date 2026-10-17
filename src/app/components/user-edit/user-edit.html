@@ -1,0 +1,53 @@
+<section class="user-edit">
+  <h1>Editar perfil</h1>
+  <p class="descricao">Atualize suas informações de usuário.</p>
+
+  @if (carregando()) {
+    <p class="mensagem">Carregando dados do usuário...</p>
+  } @else if (erro() && !usuario()) {
+    <p class="mensagem erro" role="alert">{{ erro() }}</p>
+    <a routerLink="/home/perfil" class="link-voltar">Voltar ao perfil</a>
+  } @else {
+    @if (erro()) {
+      <p class="mensagem erro" role="alert">{{ erro() }}</p>
+    }
+
+    <form [formGroup]="formulario" (ngSubmit)="salvarAlteracoes()">
+      <div class="campo">
+        <label for="name">Nome</label>
+        <input id="name" type="text" formControlName="name" autocomplete="name">
+        @if (formulario.controls.name.touched && formulario.controls.name.hasError('required')) {
+          <small class="erro">Informe seu nome.</small>
+        } @else if (formulario.controls.name.touched && formulario.controls.name.hasError('minlength')) {
+          <small class="erro">O nome deve ter pelo menos 3 caracteres.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" formControlName="email" autocomplete="email">
+        @if (formulario.controls.email.touched && formulario.controls.email.hasError('required')) {
+          <small class="erro">Informe seu e-mail.</small>
+        } @else if (formulario.controls.email.touched && formulario.controls.email.hasError('email')) {
+          <small class="erro">Informe um e-mail válido.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="password">Nova senha <span>(opcional)</span></label>
+        <input id="password" type="password" formControlName="password" autocomplete="new-password">
+        <small>Deixe em branco para manter sua senha atual. Se preenchida, deve ter pelo menos 8 caracteres.</small>
+        @if (formulario.controls.password.touched && formulario.controls.password.hasError('minlength')) {
+          <small class="erro">A senha deve ter pelo menos 8 caracteres.</small>
+        }
+      </div>
+
+      <div class="acoes">
+        <a routerLink="/home/perfil" class="btn-voltar">Cancelar</a>
+        <button type="submit" [disabled]="salvando()">
+          {{ salvando() ? 'Salvando...' : 'Salvar alterações' }}
+        </button>
+      </div>
+    </form>
+  }
+</section>

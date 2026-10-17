@@ -8,7 +8,7 @@
 
   }
 
-  @else if(erro()) {
+  @else if(erro() && !usuario()) {
 
   <div class="error">
     {{ erro() }}
@@ -21,6 +21,12 @@
   <div class="profile-card">
 
     <h1>Dados do Perfil</h1>
+
+    @if (erro()) {
+    <div class="error" role="alert">
+      {{ erro() }}
+    </div>
+    }
 
     <div class="profile-info">
 
@@ -55,15 +61,35 @@
     </div>
 
 
-    <button class="btn-editar" routerLink="/home/profile/edit">
-
-      Editar perfil
-
-    </button>
-
+    <div class="profile-actions">
+      <button class="btn-editar" routerLink="/home/perfil/editar">
+        Editar perfil
+      </button>
+      <button class="btn-excluir" type="button" (click)="solicitarExclusao()">
+        Excluir conta
+      </button>
+    </div>
 
   </div>
 
   }
 
 </div>
+
+@if (confirmandoExclusao()) {
+  <div class="modal-overlay">
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="excluir-titulo">
+      <h2 id="excluir-titulo">Excluir conta</h2>
+      <p>Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.</p>
+
+      <div class="modal-acoes">
+        <button type="button" class="btn-cancelar" (click)="cancelarExclusao()" [disabled]="excluindo()">
+          Cancelar
+        </button>
+        <button type="button" class="btn-confirmar-exclusao" (click)="confirmarExclusao()" [disabled]="excluindo()">
+          {{ excluindo() ? 'Excluindo...' : 'Confirmar' }}
+        </button>
+      </div>
+    </section>
+  </div>
+}
