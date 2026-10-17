@@ -3,6 +3,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+import { TogglePasswordDirective } from '../../directives/toggle-password.directive';
 
 interface UserProfile {
   id: string;
@@ -17,7 +18,7 @@ interface UpdateUserResponse {
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TogglePasswordDirective],
   templateUrl: './user-edit.html',
   styleUrl: './user-edit.css'
 })

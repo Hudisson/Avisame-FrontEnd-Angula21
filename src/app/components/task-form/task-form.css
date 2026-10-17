@@ -103,10 +103,10 @@
 .campo input:focus,
 .campo textarea:focus,
 .campo select:focus {
-  border-color: #4dabf7;
 
-  box-shadow:
-    0 0 0 2px rgba(77, 171, 247, 0.15);
+  outline: 1px solid #1abc9c;
+  outline-offset: 1px;
+
 }
 
 

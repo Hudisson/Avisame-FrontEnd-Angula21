@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { NavLogin } from "../nav-login/nav-login";
 import { Footer } from "../footer/footer";
 import { email } from '@angular/forms/signals';
+import { TogglePasswordDirective } from '../../directives/toggle-password.directive';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, CommonModule, NavLogin, Footer],
+  imports: [ReactiveFormsModule, CommonModule, NavLogin, Footer, TogglePasswordDirective],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

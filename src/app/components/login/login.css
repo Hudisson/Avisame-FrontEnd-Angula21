@@ -54,8 +54,8 @@
 
 /* Efeito ao focar */
 .form-group input:focus {
-    border-color: #688655;
-    box-shadow: 0 0 5px rgba(194, 224, 214, 0.5);
+  outline: 1px solid #1abc9c;
+  outline-offset: 1px;
 }
 
 #btn-login, #btn-register {
