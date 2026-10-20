@@ -14,7 +14,7 @@
       </a>
     </li>
 
-    <li>
+    <li class="li-agenda">
       <span class="span-agenda" (click)="toggleAgenda()">
         <span>
           <i
@@ -29,19 +29,22 @@
       <ul class="ul-agenda" [class.ativo]="agendaAberta">
         <li>
           <a routerLink="/home/tarefas" routerLinkActive="active">
-            Atividade diária
+            <i class="fa-solid fa-list-check"></i>
+             <span>Atividade diária</span>
           </a>
         </li>
 
         <li>
           <a routerLink="/home/eventos" routerLinkActive="active">
-            Eventos
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Eventos</span>
           </a>
         </li>
 
         <li>
           <a routerLink="/home/horarios" routerLinkActive="active">
-            Definir horário
+            <i class="fa-solid fa-clock"></i>
+            <span>Definir horário</span>
           </a>
         </li>
 
