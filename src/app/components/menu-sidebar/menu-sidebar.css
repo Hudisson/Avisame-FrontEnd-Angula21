@@ -82,9 +82,21 @@
     margin: 5px 0;
 }
 
-.ul-agenda a {
+.li-agenda .ul-agenda li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+
+    width: calc(100% - 10px);
+    margin-left: 10px;
+
     font-size: 16px;
     padding: 8px 10px;
+}
+
+.li-agenda .ul-agenda li a span {
+    margin-right: 0;
 }
 
 /* Rotação do ícone (opcional) */
